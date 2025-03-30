@@ -28,14 +28,27 @@
 <body>
     <h1>Image Storage</h1>
     <input type="file" id="imageInput" accept="image/*">
-    <div id="gallery">
-        <!-- Images stored on the website should be manually added here -->
-        <div class="image-container">
-            <img src="images/sample1.jpg" alt="Sample Image 1">
-        </div>
-        <div class="image-container">
-            <img src="images/sample2.jpg" alt="Sample Image 2">
-        </div>
-    </div>
+    <div id="gallery"></div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            displayImages();
+        });
+
+        function displayImages() {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            const imageFiles = ['images/sample1.jpg', 'images/sample2.jpg']; // Add more images as needed
+            
+            imageFiles.forEach(src => {
+                const div = document.createElement('div');
+                div.className = 'image-container';
+                const img = document.createElement('img');
+                img.src = src;
+                div.appendChild(img);
+                gallery.appendChild(div);
+            });
+        }
+    </script>
 </body>
 </html>
